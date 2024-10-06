@@ -1,23 +1,23 @@
 #### PONDERING PATHS ######
 
-##CHALLENGE 1: THE ROOT
+## CHALLENGE 1: THE ROOT
 
 -DOCUMENTATION:
-This challegne stated that all filesystems start at /. A program 'pwn' was created in the '/', directory, we had to invoke it to get the flag
+This challenge stated that all filesystems start at /. A program 'pwn' was created in the '/', directory, we had to invoke it to get the flag
 
 -THOUGHT PROCESS:
 As the instructions stated, I had to run the pwn command from the root system, all I had to do was to invoke the pwn command
 
--SOLUTION: 
-I ran the following command,
-hacker@paths~the-root:~$ /pwn
+  -SOLUTION: 
+  I ran the following command,
+  hacker@paths~the-root:~$ /pwn
 
-and recieved the following output,
-Here is your flag:
-pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
+  and recieved the following output,
+  Here is your flag:
+  pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
 
 
-##CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
+## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
 
 -DOCUMENTATION:
 It was stated that, all challenges are stored in the /challenge directory which is in the root directory
@@ -27,17 +27,17 @@ To run the challenge program, we must invoke /challenge/run command
 To get the flag, we had to execute the run file in the challenge directory, hence to invoke the 'run' program I thought to invoke the 
 /challenge/run command in the terminal
 
--SOLUTIONS:
-I ran this command,
-hacker@paths~program-and-absolute-paths:~$ /challenge/run
+  -SOLUTIONS:
+  I ran this command,
+  hacker@paths~program-and-absolute-paths:~$ /challenge/run
 
-received this output,
-Correct!!!
-/challenge/run is an absolute path! Here is your flag:
-pwn.college{AXVLqwYGz2dr5FHKxkqMiTX5IgX.dVDN1QDLyMDO0czW}
+  received this output,
+   Correct!!!
+   /challenge/run is an absolute path! Here is your flag:
+   pwn.college{AXVLqwYGz2dr5FHKxkqMiTX5IgX.dVDN1QDLyMDO0czW}
 
 
-##CHALLENGE 3: POSITION THY SLEF
+## CHALLENGE 3: POSITION THY SLEF
 
 -DOCUMENTATION:
 This introcued the 'cd' command which allows us to change directories at out convinence.
