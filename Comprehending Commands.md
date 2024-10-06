@@ -1,43 +1,40 @@
-### COMPREHENDING PATHS ####
+### COMPREHENDING COMMANDS ####
 
-## CHALLENGE 1: THE ROOT
+## CHALLENGE 1: CAT: NOT THE PET, BUT THE COMMAND!
 
 - DOCUMENTATION:
+  The command 'cat' is used to read files in linux
 
 
 - THOUGHT PROCESS:
-As the instructions stated, I had to run the pwn command from the root system, all I had to do was to invoke the pwn command
+As the instructions stated, I had to read the 'flag' file with the cat command
 
-  -SOLUTION: 
-  I ran the following command,
-  ```hacker@paths~the-root:~$ /pwn```
-
-and received the following output,
+- SOLUTION: 
+Following the instructions, I ran the following command
 ```
-    Here is your flag:
-    pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
+hacker@commands~cat-not-the-pet-but-the-command:~$ cat flag
 ```
-
-
-## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
+and I received the following output,
+```
+pwn.college{MKM6SNpkbdno5ZIC57HiGd_O4AM.dFzN1QDLyMDO0czW}
+```
+## CHALLENGE 2: CATTING ABSOLUTE PATHS
 
 - DOCUMENTATION:
-It was stated that, all challenges are stored in the /challenge directory which is in the root directory
-To run the challenge program, we must invoke /challenge/run command
+  The documentation stated that we can specify an argument as 'cat's argument, that argument begin an absolute path
 
 - THOUGHT PROCESS:
-To get the flag, we had to execute the run file in the challenge directory, hence to invoke the 'run' program I thought to invoke the 
-/challenge/run command in the terminal
+As stated in the instructions, I had to read out the 'flag' file, which was located in the /file directory, using the absolute path as argument for the cat.
 
 - SOLUTIONS:
   I ran this command,
-  ```hacker@paths~program-and-absolute-paths:~$ /challenge/run```
+  ```
+  hacker@commands~catting-absolute-paths:~$ cat /flag
+  ```
 
   received this output,
   ```
-   Correct!!!
-   /challenge/run is an absolute path! Here is your flag:
-   pwn.college{AXVLqwYGz2dr5FHKxkqMiTX5IgX.dVDN1QDLyMDO0czW}
+  pwn.college{kQ00JVAXXjES5h54-oj7z93sGnZ.dlTM5QDLyMDO0czW}
   ```
 
 
