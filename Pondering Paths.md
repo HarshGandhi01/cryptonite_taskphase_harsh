@@ -12,12 +12,13 @@ As the instructions stated, I had to run the pwn command from the root system, a
   I ran the following command,
   hacker@paths~the-root:~$ /pwn
 
-  and recieved the following output,
-  Here is your flag:
-  pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
+and recieved the following output,
+  <Here is your flag:
+  pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}>
 
 
 ## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
+
 
 -DOCUMENTATION:
 It was stated that, all challenges are stored in the /challenge directory which is in the root directory
