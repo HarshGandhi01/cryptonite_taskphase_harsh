@@ -18,7 +18,7 @@ and received the following output,
     pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
 ```
 
-  
+<br>
 ## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
 
 
@@ -71,65 +71,75 @@ Here is your flag:
 pwn.college{41Eiu9MPrhcvtJtcBb7HTCc08Mb.dZDN1QDLyMDO0czW}
 
 
-#CHALLENGE 4: POSITION ELSEWHERE
+## CHALLENGE 4: POSITION ELSEWHERE
 
--DOCUMENTATION: 
+- DOCUMENTATION: 
 This also talks about the cd command, which changes the current working directory of the user, in the shell, we have to once again, run the /challenge/run program from a directory specified by the program
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 The instruction specified to run the /challenge/run program from the directory specified by the program, so I did that
 
--SOLUTION:
+- SOLUTION:
 I ran the following command, to find the real directory of the /challenge/run
-hacker@paths~position-elsewhere:~$ /challenge/run
+```hacker@paths~position-elsewhere:~$ /challenge/run```
 
 and recieved this output,
+```
 Incorrect...
 You are not currently in the /sys/kernel directory.
 Please use the `cd` utility to change directory appropriately.
+```
 
 so then I ran this,
+```
 hacker@paths~position-elsewhere:~$ cd /sys/kernel
 hacker@paths~position-elsewhere:/sys/kernel$ /challenge/run
+```
 
 and recieved this output,
+```
 Correct!!!
 /challenge/run is an absolute path, invoked from the right directory!
 Here is your flag:
 pwn.college{QzN7Z9xGDT0L4puioWePpZpFVoE.ddDN1QDLyMDO0czW}
+```
 
 
-#CHALLENGE 5: POSITION YET ELSEWHERE
+## CHALLENGE 5: POSITION YET ELSEWHERE
 
--DOCUEMENTATION:
+- DOCUEMENTATION:
 This has the same documentation as the previous question
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 Same thought process as the previous question
 
--Solution:
+- Solution:
 Similiar solution to previous challenge
 
 
-#CHALLENGE 6: IMPLICTI RELATIVE PATHS, FROM /
+## CHALLENGE 6: IMPLICTI RELATIVE PATHS, FROM /
 
--DOCUMENTATION:
+- DOCUMENTATION:
 The documentation talks about how it dosen't matter what directory the user is in, if he is using absolute paths, but the CWD does matter for relative paths
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 We have to run /challenge/run using a relative path, using the cwd of /
 So I first CDd to the the root directory, from there I ran the challenge/run, as that is a relative path and not an absolute
 
--SOLUTION:
+- SOLUTION:
 I ran these 2 commands,
+```
 hacker@paths~implicit-relative-paths-from-:~$ cd /
 hacker@paths~implicit-relative-paths-from-:/$ challenge/run
+```
 
 and I recieved this output,
+```
 Correct!!!
 challenge/run is a relative path, invoked from the right directory!
 Here is your flag:
 pwn.college{c0aiDmTZpuusHUx905o7lABFlEK.dlDN1QDLyMDO0czW}
+```
 
 
 #CHALLENGE 7: EXPLICIT RELATIVE PATHS, FROM /
