@@ -14,7 +14,7 @@ As the instructions stated, I had to run the pwn command from the root system, a
 
 and received the following output,
     Here is your flag:
-    <pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
+    < pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
 \n
 \n
 ## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
