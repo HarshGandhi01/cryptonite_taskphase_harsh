@@ -44,31 +44,38 @@ To get the flag, we had to execute the run file in the challenge directory, henc
 
 ## CHALLENGE 3: POSITION THY SLEF
 
--DOCUMENTATION:
+- DOCUMENTATION:
 This introcued the 'cd' command which allows us to change directories at out convinence.
 This works by invoking cd with the directory path as the argument, if no argument is given, then cd goes to the home directory
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 The instructions stated that once I invoke the '/challenge/run' it will tell me which directory to go to to get the flag, so I did that
 
--SOLUTION: 
+- SOLUTION: 
 I ran this command,
+```
 hacker@paths~position-thy-self:~$ /challenge/run
-
+```
 and recieved this output,
+```
 Incorrect...
 You are not currently in the /var/log directory.
 Please use the `cd` utility to change directory appropriately.
+```
 
 Hence, then I ran this,
+```
 hacker@paths~position-thy-self:~$ cd /var/log
 hacker@paths~position-thy-self:/var/log$ /challenge/run
+```
 
-and I recieved this ooutput,
+and I recieved this output,
+```
 Correct!!!
 /challenge/run is an absolute path, invoked from the right directory!
 Here is your flag:
 pwn.college{41Eiu9MPrhcvtJtcBb7HTCc08Mb.dZDN1QDLyMDO0czW}
+```
 
 
 ## CHALLENGE 4: POSITION ELSEWHERE
