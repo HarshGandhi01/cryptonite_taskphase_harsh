@@ -18,9 +18,8 @@ and received the following output,
     pwn.college{UJ3AXvJzxa1nHUYuhcuGRPwKPcb.dhzN5QDLyMDO0czW}
 ```
 
-<br>
-## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
 
+## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
 
 - DOCUMENTATION:
 It was stated that, all challenges are stored in the /challenge directory which is in the root directory
@@ -149,74 +148,88 @@ pwn.college{c0aiDmTZpuusHUx905o7lABFlEK.dlDN1QDLyMDO0czW}
 ```
 
 
-#CHALLENGE 7: EXPLICIT RELATIVE PATHS, FROM /
+## CHALLENGE 7: EXPLICIT RELATIVE PATHS, FROM /
 
--DOCUMENTATION:
+- DOCUMENTATION:
 This talks about the uses of '.' and '..' in file systems for linux and windows.
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 We have to use . and .. to call the /challenge/run command, so first I CDd to the root directory and then I ran the challenge-run using ./
 
--SOLUTION:
+-S OLUTION:
 I ran the following commands,
+```
 hacker@paths~explicit-relative-paths-from-:~$ cd /
 hacker@paths~explicit-relative-paths-from-:/$ ./challenge/run
+```
 
 and I recieved the following output,
+```
 Correct!!!
 ./challenge/run is a relative path, invoked from the right directory!
 Here is your flag:
 pwn.college{o2xKln7XBzZiJhrOajWDnXKlYif.dBTN1QDLyMDO0czW}
+```
 
 
-##CHALLENGE 8: IMPLICIT RELATIVE PATH
+## CHALLENGE 8: IMPLICIT RELATIVE PATH
 
--DOCUMENTAION:
+- DOCUMENTAION:
 This talks about how to explicit define a path for the file so that the linux file system does not accidentally run all the programs with the same name
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 As we have to execute the run program specifically using '.', I tried to run the /challenge/run command to see what it shows, I recieved the follwoing output
+```
 Incorrect...
 You are not currently in the /challenge directory.
 Please use the `cd` utility to change directory appropriately
+```
 
 so, after that I ran the following set of code,
+```
 hacker@paths~implicit-relative-path:~$ cd /challenge
 hacker@paths~implicit-relative-path:/challenge$ ./run
 the second command explicitely run the run program from the challenge directory
+```
 
 I recieved the follwoing output
+```
 Correct!!!
 ./run is a relative path, invoked from the right directory!
 Here is your flag:
 pwn.college{wXosx4JAoxKdgKjbMk0kHTJml3r.dFTN1QDLyMDO0czW}
+```
 
 
-##CHALLENGE 9: HOME SWEET HOME
+# CHALLENGE 9: HOME SWEET HOME
 
--DOCUMENTATION:
+- DOCUMENTATION:
 This part talk about the usage of ~ in file systems, ~ expands to /home/hacker
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 In this challenge we have to invoke the /challenge/run command with an argument, with 3 constraints,
 Hence, we have to use ~ as ~ expands to /home/hacker
 
--SOLUTION:
+- SOLUTION:
 Since we know that the argument can only be 3 characters or less, I tried doing this
+```
 hacker@paths~home-sweet-home:~$ /challenge/run ~a
+```
 
 however this apporach was wrong as,
 The argument you provided is not an absolute path!
 
 After trying with many different combinations, I was stuck, then I realized the ~ expands to /home/hacker and not /home/hacker/
 hence afterwards I tried this,
+```
 hacker@paths~home-sweet-home:~$ /challenge/run ~/a
-
+```
 and I recieved the following output,
+```
 Writing the file to /home/hacker/a!
 ... and reading it back to you:
 pwn.college{UFYlCdXE_A8izs3F3qpzGxKmZh-.dNzM4QDLyMDO0czW}
-
+```
 
 
 ################# END OF MODULE 2 ##############
