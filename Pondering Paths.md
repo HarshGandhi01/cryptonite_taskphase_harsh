@@ -22,22 +22,24 @@ and received the following output,
 ## CHALLENGE 2: PROGRAM AND ABSOLUTE PATHS
 
 
--DOCUMENTATION:
+- DOCUMENTATION:
 It was stated that, all challenges are stored in the /challenge directory which is in the root directory
 To run the challenge program, we must invoke /challenge/run command
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 To get the flag, we had to execute the run file in the challenge directory, hence to invoke the 'run' program I thought to invoke the 
 /challenge/run command in the terminal
 
-  -SOLUTIONS:
+- SOLUTIONS:
   I ran this command,
-  hacker@paths~program-and-absolute-paths:~$ /challenge/run
+  ```hacker@paths~program-and-absolute-paths:~$ /challenge/run```
 
   received this output,
+  ```
    Correct!!!
    /challenge/run is an absolute path! Here is your flag:
    pwn.college{AXVLqwYGz2dr5FHKxkqMiTX5IgX.dVDN1QDLyMDO0czW}
+  ```
 
 
 ## CHALLENGE 3: POSITION THY SLEF
