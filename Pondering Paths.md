@@ -2,10 +2,10 @@
 
 ## CHALLENGE 1: THE ROOT
 
--DOCUMENTATION:
+- DOCUMENTATION:
 This challenge stated that all filesystems start at /. A program 'pwn' was created in the '/', directory, we had to invoke it to get the flag
 
--THOUGHT PROCESS:
+- THOUGHT PROCESS:
 As the instructions stated, I had to run the pwn command from the root system, all I had to do was to invoke the pwn command
 
   -SOLUTION: 
