@@ -20,7 +20,7 @@ and I received the following output,
 You ran me with the working directory of /challenge! Here is your flag:
 pwn.college{IxrllSPwA27BHJvjMBCjUCCNzSE.dFjM4QDLyMDO0czW}
   ```
-## CHALLENGE 2: 
+## CHALLENGE 2: Mathing with ?
 
 - DOCUMENTATION:
   Next, let's learn about ?. When it encounters a ? character in any argument, the shell will treat it as single-character wildcard. This works like *, but only matches one character
@@ -30,21 +30,27 @@ pwn.college{IxrllSPwA27BHJvjMBCjUCCNzSE.dFjM4QDLyMDO0czW}
 
 - SOLUTIONS:  
   I ran this command,
-  ```
-  ```
+```
+hacker@globbing~matching-with-:~$ cd /?ha??enge
+hacker@globbing~matching-with-:/challenge$ /challenge/run
+
+```
 
   received this output,
   ```
-
+You ran me with the working directory of /challenge! Here is your flag:
+pwn.college{sZugMPQiFgxC4dV7I2B8qa5DCgj.dJjM4QDLyMDO0czW}
   ```
 
 
-## CHALLENGE : 
+## CHALLENGE 3: Matching with [] 
 
-- DOCUMENTATION:   
+- DOCUMENTATION:
+  Next, we will cover []. The square brackes are, essentially, a limited form of ?, in that instead of matching any character, [] is a wildcard for some subset of potential characters, specified within the brackets. For example, [pwn] will match the character p, w, or n. For example:
 
-
-- THOUGHT PROCESS:  
+- THOUGHT PROCESS:
+  
+  
 
 - SOLUTION:   
 I ran this command,
