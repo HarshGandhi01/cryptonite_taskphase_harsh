@@ -163,3 +163,211 @@ Here is your flag:
 pwn.college{080Okrpb5OlFcGleRr4RZNn2hR3.dBzN1QDLzgTN0czW}
 hacker@piping~redirecting-input:~$
 ```
+
+## CHALLENGE 6: GREPPING STORED RESULTS
+
+-DOCUMENTATION:  
+You know how to run commands, how to redirect their output (e.g., >), and how to search through the resulting file (e.g., grep). Let's put this together!
+
+
+
+-THOUGHT PROCESS:  
+In this level,I have to,
+
+Redirect the output of /challenge/run to /tmp/data.txt.
+This will result in a hundred thousand lines of text, with one of them being the flag, in /tmp/data.txt.
+Grep that for the flag!
+
+-SOLUITION:  
+
+I ran the following program:
+```
+hacker@piping~grepping-stored-results:~$ /challenge/run > /tmp/data.txt
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge will check that output is redirected to a specific file path : /tmp/data.txt
+[INFO] - the challenge will output a reward file if all the tests pass : /challenge/.data.txt
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /challenge/.data.txt file.
+
+[TEST] You should have redirected my stdout to a file called /tmp/data.txt. Checking...
+
+[HINT] File descriptors are inherited from the parent, unless the FD_CLOEXEC is set by the parent on the file descriptor.
+[HINT] For security reasons, some programs, such as python, do this by default in certain cases. Be careful if you are
+[HINT] creating and trying to pass in FDs in python.
+
+[PASS] The file at the other end of my stdout looks okay!
+[PASS] Success! You have satisfied all execution requirements.
+hacker@piping~grepping-stored-results:~$ grep pwn.college /tmp/data.txt
+pwn.college{81NcCNzOU71MlAEXMr7o-IdP_06.dhTM4QDLzgTN0czW}
+```
+
+## CHALLENGE 7: GREPPING LIVE OUTPUT
+
+-DOCUMENTATION:  
+It turns out that you can "cut out the middleman" and avoid the need to store results to a file, like you did in the last level. You can use this using the | (pipe) operator. Standard output from the command to the left of the pipe will be connected to (piped into) the standard input of the command to the right of the pipe. For example:
+
+-THOUGHT PROCESS:  
+Now try it for yourself! /challenge/run will output a hundred thousand lines of text, including the flag. Grep for the flag!
+
+-SOLUITION:  
+
+I ran the following program:
+```
+Connected!
+hacker@piping~grepping-live-output:~$ /challenge/run | grep pwn.college
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge checks for a specific process at the other end of stdout : grep
+[INFO] - the challenge will output a reward file if all the tests pass : /challenge/.data.txt
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /challenge/.data.txt file.
+
+[TEST] You should have redirected my stdout to another process. Checking...
+[TEST] Performing checks on that process!
+
+[INFO] The process' executable is /nix/store/xpq4yhadyhazkcsggmqd7rsgvxb3kjy4-gnugrep-3.11/bin/grep.
+[INFO] This might be different than expected because of symbolic links (for example, from /usr/bin/python to /usr/bin/python3 to /usr/bin/python3.8).
+[INFO] To pass the checks, the executable must be grep.
+
+[PASS] You have passed the checks on the process on the other end of my stdout!
+[PASS] Success! You have satisfied all execution requirements.
+pwn.college{0D7VtydG8XcoP-plxYs2tTE_Oux.dlTM4QDLzgTN0czW}
+```
+
+## CHALLENGE 8: GREPPING ERRORS
+
+-DOCUMENTATION:  
+You know how to redirect errors to a file, and you know how to pipe output to another program, such as grep. But what if you wanted to grep through errors directly?
+
+The > operator redirects a given file descriptor to a file, and you've used 2> to redirect fd 2, which is standard error. The | operator redirects only standard output to another program, and there is no 2| form of the operator! It can only redirect standard output (file descriptor 1).
+
+Luckily, where there's a shell, there's a way!
+
+The shell has a >& operator, which redirects a file descriptor to another file descriptor. This means that we can have a two-step process to grep through errors: first, we redirect standard error to standard output (2>& 1) and then pipe the now-combined stderr and stdout as normal (|)
+
+
+-THOUGHT PROCESS:  
+Like the last level, this level will overwhelm you with output, but this time on standard error. Grep through it to find the flag
+
+-SOLUITION:  
+
+I ran the following program:
+```
+hacker@piping~grepping-errors:~$ /challenge/run 2>&1 | grep pwn.college
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge checks for a specific process at the other end of stderr : grep
+[INFO] - the challenge will output a reward file if all the tests pass : /challenge/.data.txt
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /challenge/.data.txt file.
+
+[TEST] You should have redirected my stderr to another process. Checking...
+[TEST] Performing checks on that process!
+
+[INFO] The process' executable is /nix/store/xpq4yhadyhazkcsggmqd7rsgvxb3kjy4-gnugrep-3.11/bin/grep.
+[INFO] This might be different than expected because of symbolic links (for example, from /usr/bin/python to /usr/bin/python3 to /usr/bin/python3.8).
+[INFO] To pass the checks, the executable must be grep.
+
+[PASS] You have passed the checks on the process on the other end of my stderr!
+[PASS] Success! You have satisfied all execution requirements.
+pwn.college{g7pEwkOzTVPSRFSNx6lQxH8D_Eo.dVDM5QDLzgTN0czW}
+hacker@piping~grepping-errors:~$
+```
+
+## CHALLENGE 8: DUPLICATING PIPED DATA WITH TEE
+
+-DOCUMENTATION:  
+When you pipe data from one command to another, you of course no longer see it on your screen. This is not always desired: for example, you might want to see the data as it flows through between your commands to debug unintended outcomes (e.g., "why did that second command not work???").
+Luckily, there is a solution! The tee command, named after a "T-splitter" from plumbing pipes, duplicates data flowing through your pipes to any number of files provided on the command line
+
+-THOUGHT PROCESS:  
+This process' /challenge/pwn must be piped into /challenge/college, but you'll need to intercept the data to see what pwn needs from you!
+
+-SOLUITION:  
+
+I ran the following program:
+```
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee output | /challenge/college
+Processing...
+WARNING: you are overwriting file output with tee's output...
+The input to 'college' does not contain the correct secret code! This code
+should be provided by the 'pwn' command. HINT: use 'tee' to intercept the
+output of 'pwn' and figure out what the code needs to be.
+hacker@piping~duplicating-piped-data-with-tee:~$ cat output
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "4tfLWu_k"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret "4tfLWu_k"
+Processing...
+You must pipe the output of /challenge/pwn into /challenge/college (or 'tee'
+for debugging).
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret "4tfLWu_k" | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{4tfLWu_k7adZwApNrJqngrg7-GO.dFjM5QDLzgTN0czW}
+```
+
+
+## CHALLENGE 9: WRITING TO MULTIPLE PROGRAMS
+
+-DOCUMENTATION:  
+Luckily, Linux follows the philosophy that "everything is a file". This is, the system strives to provide file-like access to most resources, including the input and output of running programs! The shell follows this philosophy, allowing you to, for example, use any utility that takes file arguments on the command line (such as tee) and hook it up to the input or output side of a program!
+
+This is done using what's called Process Substitution. If you write an argument of >(rev), bash will run the rev command (this command reads data from standard input, reverses its order, and writes it to standard output!), but hook up its input to a temporary file that it will create. This isn't a real file, of course, it's what's called a named pipe, in that it has a file name:
+
+
+-THOUGHT PROCESS:  
+In this challenge, we have /challenge/hack, /challenge/the, and /challenge/planet. Run the /challenge/hack command, and duplicate its output as input to both the /challenge/the and the /challenge/planet commands!
+
+-SOLUITION:  
+
+I ran the following program:
+```
+root@DESKTOP-MPJ395R:~# ssh -i ./key hacker@dojo.pwn.college
+Connected!
+hacker@piping~writing-to-multiple-programs:~$ /challenge/hack | tee >(/challenge/the) | /challenge/planet
+Congratulations, you have duplicated data into the input of two programs! Here
+is your flag:
+pwn.college{Ae2CSNZ9KT5mDWENsPh7LsX3K0h.dBDO0UDLzgTN0czW}
+hacker@piping~writing-to-multiple-programs:~$
+```
+
+## CHALLENGE 10: SPLIT PIPING
+
+-DOCUMENTATION:  
+Now, let's put your knowledge together. You must master the ultimate piping task: redirect stdout to one program and stderr to another.
+
+The challenge here, of course, is that the | operator links the stdout of the left command with the stdin of the right command. Of course, you've used 2>&1 to redirect stderr into stdout and, thus, pipe stderr over, but this then mixes stderr and stdout. How to keep it unmixed?
+
+You will need to combine your knowledge of >(), 2>, and |. How to do it is a task I'll leave to you.
+
+
+-THOUGHT PROCESS:  
+In this challenge, you have:
+
+/challenge/hack: this produces data on stdout and stderr
+/challenge/the: you must redirect hack's stderr to this program
+/challenge/planet: you must redirect hack's stdout to this program
+
+-SOLUITION:  
+
+I ran the following program:
+```
+Connected!
+hacker@piping~split-piping-stderr-and-stdout:~$ /challenge/hack 2> >(/challenge/the) > >(/challenge/planet)
+Congratulations, you have learned a redirection technique that even experts
+struggle with! Here is your flag:
+pwn.college{UmUy2jHPwsMIwxMyxMzWDHE37FV.dFDNwYDLzgTN0czW}
+hacker@piping~split-piping-stderr-and-stdout:~$
+```
+
+
+
