@@ -88,7 +88,7 @@ hacker@piping~appending-output:~$ cat ~/the-flag
  |
 \|/ This is the first half:
  v
-pwn.college{UX7o86zRTky3yokzi0Tl4zebzb6.ddDM5QDLzgTN0czW}
+pwn.college{Qoj02FEXH8kryGxpQrww-EGDDwP.ddDM5QDLyMDO0czW}
                               ^
      that is the second half /|\
                               |
