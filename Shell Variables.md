@@ -2,6 +2,7 @@
 
 ## CHALLENGE 1: PRINTING VARIABLES
 
+  
 - DOCUMENTATION: Let's start with printing variables out. The /challenge/run program will not, and cannot, give you the flag, but that's okay, because the flag has been put into the variable called "FLAG"! Just have your shell print it out!
 
 You can accomplish this using a number of ways, but we'll start with echo. This command just prints stuff. For example:
