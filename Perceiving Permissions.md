@@ -308,3 +308,21 @@ pwn.college{M5SE9WZ9n1rKq5urOk1qP7wzdOc.dBTM2QDLyMDO0czW}
 ```
 
 ## CHALLENGE 7: 
+
+- DOCUMENTATION:
+  There are many cases in which non-root users need elevated access to do certain system tasks. The system admin can't be there to give them the password every time a user wanted to do a task that only root/sudoers can do. The "Set User ID" (SUID) permissions bit allows the user to run a program as the owner of that program's file.
+
+This is actually the exact mechanism used to let the challenge programs you run read the flag or, outside of pwn.college, to enable system administration tools such as su, sudo, and so on. The permission of a file with SUID list look like this:
+
+- THOUGHT PROCESS:
+  Now, we are going to let you add the SUID bit to the /challenge/getroot program in order to spawn a root shell for you to cat the flag yourself!
+
+- SOLUTION:
+```
+hacker@permissions~the-suid-bit:~$ chmod a+s /challenge/getroot
+hacker@permissions~the-suid-bit:~$ /challenge/getroot
+SUCCESS! You have set the suid bit on this program, and it is running as root! 
+Here is your shell...
+root@permissions~the-suid-bit:~# cat /flag
+pwn.college{YRwG4aeq7elg45LMy_O_oPEVXWN.dNTM2QDLyMDO0czW}
+```
