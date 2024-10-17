@@ -36,4 +36,16 @@ Congratulations, you have become Zardus! Here is your flag:
 pwn.college{w2FT4fDhvlZBUNZ7j7nAYv7_cIF.dZTN0UDLyMDO0czW}
 ```
 
-- THOUGHT CCC
+## CHALLENGE 4: USING SUDO
+
+- DOCUMENTATION:
+In the olden days, a typical Linux system had a root password that administrators would use to su to root (after logging into their account with their normal account password). But root passwords are a pain to maintain, they (or their hashes!) can leak, and they don't lend themselves well to larger environments (e.g., fleets of servers). To address this, in recent decades, the world has moved from administration via su to administration via sudo (superuser do)
+
+- THOUGHT PROCESS:
+In this level, we will give you sudo access, and you will use it to read the flag
+
+- SOLUTION:
+```
+hacker@users~using-sudo:~$ sudo cat /flag
+pwn.college{U_D6lzuanVIJuYvukvtGOpES65A.dhTN0UDLyMDO0czW}
+```
