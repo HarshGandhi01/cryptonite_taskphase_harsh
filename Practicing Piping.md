@@ -328,6 +328,13 @@ This is done using what's called Process Substitution. If you write an argument 
 In this challenge, we have /challenge/hack, /challenge/the, and /challenge/planet. Run the /challenge/hack command, and duplicate its output as input to both the /challenge/the and the /challenge/planet commands!
 
 -SOLUITION:  
-
+```
+hacker@piping~writing-to-multiple-programs:~$ /challenge/hack| tee>(/challenge/the) > (/challenge/planet)
+bash: syntax error near unexpected token `('
+Congratulations, you have duplicated data into the input of two programs! Here 
+is your flag:
+pwn.college{UA_pGGWzSQ1zTBeCtsjpN1PbpGv.dBDO0UDLyMDO0czW}
+hacker@piping~writing-to-multiple-programs:~$ 
+```
 
 
